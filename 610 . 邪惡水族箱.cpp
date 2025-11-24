@@ -4,7 +4,6 @@ using namespace std;
 #define ll long long
 
 string s;
-int id=0;
 const int M = 998244353;
 
 ll calc(){
