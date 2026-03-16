@@ -7,6 +7,7 @@ int n;
 int a[100005];
 ll ans=0;
 vector<int> stk(100005), l(100005), r(100005);
+int top = -1;
 int mi = 2e9;
 int p;
 
@@ -48,22 +49,32 @@ signed main(){
     // }
 
 //笛卡爾樹
-    int top = -1;
-    for(int i=1; i<=n; i++){
-        int last = 0;
+    // for(int i=1; i<=n; i++){
+    //     int last = 0;
+    //     while(top != -1 && a[i] < a[stk[top]]){
+    //         last = stk[top];
+    //         top--;
+    //     }
+
+    //     if(last) l[i] = last;
+    //     if(top != -1) r[stk[top]] = i;
+
+    //     stk[++top] = i;
+    // }
+
+    // dfs(p,0,n+1);
+
+    
+//單調堆疊
+    stk[++top] = 0;
+    a[n+1] = 0;
+    for(int i=1; i<=n+1; i++){
         while(top != -1 && a[i] < a[stk[top]]){
-            last = stk[top];
+            ans += a[stk[top]] * (i - stk[top]) * (stk[top] - stk[top-1]);
             top--;
         }
-
-        if(last) l[i] = last;
-        if(top != -1) r[stk[top]] = i;
-
         stk[++top] = i;
     }
-
-    dfs(p,0,n+1);
-
 
     cout<<ans<<'\n';
 }
