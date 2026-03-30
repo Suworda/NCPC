@@ -7,7 +7,7 @@ list<int>::iterator ptr[100005];
 void sol(){
     int n,q;
     cin>>n>>q;
-    multiset<int> mst;
+    unordered_multiset<int> mst;
 
     for(int i=0; i<n; i++){
         int c;
